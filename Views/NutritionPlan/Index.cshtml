@@ -1,0 +1,350 @@
+﻿@model IEnumerable<Nutrition.Models.NutritionPlan>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Kế Hoạch Dinh Dưỡng</title>
+    <style>
+        /* Tổng quan */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f9f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Thanh điều hướng */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #9EDF9C;
+            padding: 10px 20px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .navbar .logo {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-link {
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-link:hover {
+            color: #217936;
+        }
+
+        .navbar .logout {
+            text-decoration: none;
+            color: #dc3545;
+            font-weight: bold;
+            background-color: white;
+            border: 2px solid #dc3545;
+            padding: 5px 15px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .logout:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* Tiêu đề */
+        .header {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Thanh hành động */
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 10px;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #1aa00c;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btnThem {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #217936;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btnThem:hover {
+            background-color: #C2FFC7;
+            transform: scale(1.05);
+        }
+
+        /* Bảng dữ liệu */
+        .table-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr); /* Chia cột cho bảng */
+            margin: 20px;
+            border: 1px solid #deecd6;
+        }
+
+        .table-header, .table-row {
+            display: contents; /* Hiển thị dạng dòng trong Grid */
+        }
+
+        .table-container div {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #deecd6;
+        }
+
+        .table-header div {
+            font-weight: bold;
+            background-color: #83cf64;
+            color: white;
+        }
+
+        .table-row {
+            background-color: #eaf2e6;
+        }
+
+        .table-row:hover {
+            background-color: #c2ffc7;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn.warning {
+            background-color: #ffc107;
+            color: white;
+        }
+        @{
+            Layout=null;
+        }
+
+        .btn.danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Thông báo */
+        .alert.success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            margin: 20px 10px;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Thanh điều hướng -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <span class="logo">3Nutrition</span>
+        </div>
+        <div class="navbar-center nav-links">
+            <a href="#" class="nav-link">Đặt lịch tư vấn</a>
+            <a href="#" class="nav-link">Quản lý</a>
+        </div>
+        <div class="navbar-right">
+            <span class="user-info">Admin</span>
+            <a href="#" class="logout">Đăng xuất</a>
+        </div>
+    </nav>
+
+    <!-- Tiêu đề -->
+    <header class="header">
+        <h1>Quản Lý Kế Hoạch Dinh Dưỡng</h1>
+    </header>
+
+    <!-- Thông báo -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert success">@TempData["SuccessMessage"]</div>
+    }
+
+    <!-- Thanh hành động -->
+    <div class="action-bar">
+        <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." class="search-input" onkeyup="searchKeHoach()" />
+        <a asp-action="Create" class="btnThem">Thêm Kế Hoạch</a>
+    </div>
+
+    <!-- Bảng dữ liệu -->
+    <div class="table-container">
+        <!-- Tiêu đề bảng -->
+        <div class="table-header">
+            <div>Mã Kế Hoạch</div>
+            <div>Mã Chuyên Gia</div>
+            <div>Mã Người Dùng</div>
+            <div>Ngày Tạo</div>
+            <div>Chi Tiết Kế Hoạch</div>
+            <div>Gợi Ý Thực Phẩm</div>
+            <div>Số Calo</div>
+            <div>Xử Lý</div>
+        </div>
+
+        <!-- Dữ liệu -->
+        @if (Model != null && Model.Any())
+        {
+            foreach (var keHoach in Model)
+            {
+                <div class="table-row" id="row-@keHoach.sMaKeHoach">
+                    <div>@keHoach.sMaKeHoach</div>
+                    <div>@keHoach.sMaChuyenGia</div>
+                    <div>@keHoach.sMaNguoiDung</div>
+                    <div>@keHoach.dNgayTao.ToString("yyyy-MM-dd")</div>
+                    <div>@keHoach.sChiTietKeHoach</div>
+                    <div>@keHoach.sGioiYThucPham</div>
+                    <div>@keHoach.iSoCalo</div>
+                    <div class="action-buttons">
+                        <a asp-action="Edit" asp-route-id="@keHoach.sMaKeHoach" class="btn warning">Sửa</a>
+                        <a href="javascript:void(0);" onclick="deleteKeHoach('@keHoach.sMaKeHoach')" class="btn danger">Xóa</a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="table-row">
+                <div colspan="8" class="text-center">Không có dữ liệu</div>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+
+
+<script>
+  function deleteKeHoach(id) {
+    console.log('ID chuẩn bị gửi:', id);
+
+    if (confirm('Bạn có chắc chắn muốn xóa không?')) {
+        fetch('/QuanLyKeHoach/Delete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(id) // Truyền id trực tiếp
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Phản hồi thành công:', data.message);
+                alert(data.message);
+                document.getElementById(`row-${id}`).remove();
+            } else {
+                console.log('Phản hồi lỗi:', data.message);
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Lỗi khi gửi yêu cầu:', error);
+            alert('Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại.');
+        });
+    }
+}
+
+    function searchKeHoach() {
+    const searchTerm = document.getElementById('searchInput').value.trim();
+    console.log('Từ khóa tìm kiếm:', searchTerm);
+
+    fetch(`/QuanLyKeHoach/Search?searchTerm=${encodeURIComponent(searchTerm)}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Lỗi phản hồi từ server!');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const tableContainer = document.querySelector('.table-container');
+        const tableHeader = document.querySelector('.table-header').outerHTML; // Lưu tiêu đề bảng
+        tableContainer.innerHTML = tableHeader; // Xóa và đặt lại tiêu đề bảng
+
+        if (data.length === 0) {
+            // Nếu không có dữ liệu
+            tableContainer.innerHTML += `
+                <div class="table-row">
+                    <div colspan="8" class="text-center">Không có dữ liệu</div>
+                </div>`;
+            return;
+        }
+
+        // Duyệt qua dữ liệu và render các dòng
+        data.forEach(item => {
+            const row = `
+                <div class="table-row" id="row-${item.sMaKeHoach}">
+                    <div>${item.sMaKeHoach}</div>
+                    <div>${item.sMaChuyenGia}</div>
+                    <div>${item.sMaNguoiDung}</div>
+                    <div>${new Date(item.dNgayTao).toISOString().split('T')[0]}</div>
+                    <div>${item.sChiTietKeHoach}</div>
+                    <div>${item.sGioiYThucPham}</div>
+                    <div>${item.iSoCalo}</div>
+                    <div class="action-buttons">
+                        <a href="/QuanLyKeHoach/Edit/${item.sMaKeHoach}" class="btn warning">Sửa</a>
+                        <a href="javascript:void(0);" onclick="deleteKeHoach('${item.sMaKeHoach}')" class="btn danger">Xóa</a>
+                    </div>
+                </div>`;
+            tableContainer.innerHTML += row;
+        });
+    })
+    .catch(error => {
+        console.error('Lỗi khi tìm kiếm:', error);
+        alert('Đã xảy ra lỗi khi tìm kiếm. Vui lòng thử lại.');
+    });
+}
+</script>

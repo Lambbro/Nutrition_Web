@@ -1,0 +1,158 @@
+﻿/* Reset và thiết lập cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+/* Phần nội dung chính */
+.content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Tiêu đề */
+h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #28a745;
+    text-align: center;
+}
+
+/* Nút hành động */
+a.btn, button.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+button.btn {
+    outline:none;
+    background-color:orangered
+}
+
+    button.btn:hover {
+        cursor: pointer;
+        background-color: red;
+    }
+
+.btn-success {
+    background-color: #28a745;
+    border: 1px solid #28a745;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+.btn-primary {
+    background-color: #28a745;
+    border: 1px solid #28a745;
+}
+
+    .btn-primary:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+.btn-warning {
+    background-color: #ffc107;
+    border: 1px solid #ffc107;
+    color: #343a40;
+}
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+        border-color: #d39e00;
+    }
+
+/* Bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead tr {
+    background-color: #28a745;
+    color: white;
+    text-align: left;
+    font-size: 1rem;
+}
+
+thead th {
+    padding: 12px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #dee2e6;
+}
+
+    tbody tr:nth-of-type(even) {
+        background-color: #f8f9fa;
+    }
+
+    tbody tr:hover {
+        background-color: #e9ecef;
+    }
+
+tbody td {
+    padding: 12px;
+    color: #495057;
+}
+
+/* Nút "Add New Progress" */
+a.btn-success {
+    display: block;
+    margin: 20px auto;
+    width: fit-content;
+    padding: 12px 20px;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    a.btn {
+        font-size: 0.9rem;
+    }
+}

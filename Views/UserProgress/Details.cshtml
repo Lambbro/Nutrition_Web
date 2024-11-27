@@ -1,0 +1,23 @@
+﻿@model Nutrition.ViewModels.ProgressDetailsViewModel
+
+<link rel="stylesheet" href="~/css/detailsProgress.css" />
+
+<body>
+    @await Html.PartialAsync("~/Views/PartialView/_Header.cshtml")
+
+    <div class="content">
+        <a class="btn btn-primary" href="@Url.Action("List", "UserProgress")">Back to List</a>
+        <h2>Progress Details</h2>
+
+        <div>
+            <p><strong>Thời gian tạo:</strong> @Model.create_time.ToString("yyyy-MM-dd HH:mm:ss")</p>
+            <p><strong>Sức khỏe:</strong> @Model.health_status</p>
+            <p><strong>Chiều cao:</strong> @Model.weight</p>
+            <p><strong>Cân nặng:</strong> @Model.height</p>
+            <p><strong>Ghi chú:</strong> @Model.commment</p>
+        </div>
+
+        <a class="btn btn-warning" href="@Url.Action("Edit", "UserProgress", new { id = Model.progress_id })">Sửa</a>
+    </div>
+    @await Html.PartialAsync("~/Views/PartialView/_Footer.cshtml")
+</body>

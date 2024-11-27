@@ -1,0 +1,172 @@
+﻿@model Nutrition.Models.Nutritionist
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa Chuyên Gia</title>
+    <style>
+        /* CSS Thuần */
+        @{
+            Layout = null;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4faf4; /* Xanh lá nhạt */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h2 {
+            color: #000000; /* Xanh lá đậm */
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #000000; /* Xanh lá đậm */
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #c8e6c9; /* Xanh lá nhạt */
+            border-radius: 5px;
+            font-size: 14px;
+            color: #000000; /* Xanh lá đậm */
+            background-color: #f9fdf9; /* Xanh lá rất nhạt */
+        }
+
+        .form-input:focus {
+            border-color: #66bb6a; /* Xanh lá sáng */
+            outline: none;
+            box-shadow: 0 0 5px rgba(102, 187, 106, 0.5);
+        }
+
+        textarea.form-input {
+            resize: none;
+            height: 100px;
+        }
+
+        .error-message {
+            font-size: 12px;
+            color: #d32f2f; /* Màu đỏ cho lỗi */
+            margin-top: 5px;
+            display: block;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .btn-submit {
+            background-color: #4caf50; /* Xanh lá cây */
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #45a049; /* Xanh lá cây đậm hơn */
+        }
+
+        .btn-cancel {
+            background-color: #e8f5e9; /* Xanh lá rất nhạt */
+            color: #2e7d32; /* Xanh lá đậm */
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            border: 1px solid #c8e6c9; /* Xanh lá nhạt */
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-cancel:hover {
+            background-color: #c8e6c9; /* Xanh lá đậm hơn */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sửa Chuyên Gia</h2>
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="sMaChuyenGia" />
+
+            <div class="form-group">
+                <label for="sHoTenChuyenGia" class="form-label">Họ Tên Chuyên Gia</label>
+                <input type="text" asp-for="sHoTenChuyenGia" id="sHoTenChuyenGia" class="form-input" />
+                <span asp-validation-for="sHoTenChuyenGia" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="sSDT" class="form-label">SĐT</label>
+                <input type="text" asp-for="sSDT" id="sSDT" class="form-input" />
+                <span asp-validation-for="sSDT" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="sDiaChi" class="form-label">Địa Chỉ</label>
+                <input type="text" asp-for="sDiaChi" id="sDiaChi" class="form-input" />
+                <span asp-validation-for="sDiaChi" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="iTuoi" class="form-label">Tuổi</label>
+                <input type="number" asp-for="iTuoi" id="iTuoi" class="form-input" />
+                <span asp-validation-for="iTuoi" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <input type="radio" id="male" name="bGioiTinh" value="true" checked />
+                    <label for="male">Nam</label>
+                </div>
+                <div>
+                    <input type="radio" id="female" name="bGioiTinh" value="false" />
+                    <label for="female">Nữ</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sChuyenMon" class="form-label">Chuyên môn</label>
+                <input type="text" asp-for="sChuyenMon" id="sChuyenMon" class="form-input" />
+                <span asp-validation-for="sChuyenMon" class="error-message"></span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Lưu</button>
+                <a asp-action="Index" class="btn-cancel">Hủy</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

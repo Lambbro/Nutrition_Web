@@ -1,0 +1,140 @@
+﻿/* Reset và thiết lập cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #495057;
+}
+
+.non-decor {
+    text-decoration: none;
+    color: #28a745;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+    .non-decor:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+
+.back-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #28a745;
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+    .back-btn:hover {
+        background-color: #28a745;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+/* Form styling */
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #495057;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fdfdfd;
+    transition: border-color 0.3s ease-in-out;
+}
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        border-color: #007bff;
+        outline: none;
+        background-color: #ffffff;
+    }
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+.text-danger {
+    color: #dc3545;
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    button[type="submit"] {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}

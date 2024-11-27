@@ -1,0 +1,37 @@
+﻿@model Nutrition.ViewModels.ProgressDetailsViewModel
+
+<link rel="stylesheet" href="~/css/editProgress.css" />
+
+<body>
+    @await Html.PartialAsync("~/Views/PartialView/_Header.cshtml")
+
+    <div class="content">
+        <h2>Edit Progress</h2>
+
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="progress_id" />
+
+            <div class="form-group">
+                <label asp-for="health_status">Sức khỏe</label>
+                <input class="form-control" asp-for="health_status" />
+            </div>
+            <div class="form-group">
+                <label asp-for="height">Chiều cao</label>
+                <input type="number" class="form-control" asp-for="height" />
+            </div>
+            <div class="form-group">
+                <label asp-for="weight">Câ nặng</label>
+                <input type="number" class="form-control" asp-for="weight" />
+            </div>
+            <div class="form-group">
+                <label asp-for="commment">Ghi chú</label>
+                <textarea class="form-control" asp-for="commment"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a class="btn btn-secondary" href="@Url.Action("List", "UserProgress")">Hủy</a>
+        </form>
+    </div>
+    @await Html.PartialAsync("~/Views/PartialView/_Footer.cshtml")
+
+</body>

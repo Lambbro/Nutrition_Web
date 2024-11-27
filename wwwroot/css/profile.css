@@ -1,0 +1,62 @@
+﻿.content {
+    max-width: 1280px;
+    margin: 20px auto;
+}
+
+.profile-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px 0 0 8px;
+    background-color: #f9f9f9;
+    margin: auto;
+}
+
+    .profile-container p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    .profile-container strong {
+        font-weight: bold;
+    }
+
+.progress-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 0 8px 8px 0;
+    background-color: #f9f9f9;
+}
+
+    .progress-container p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+.btn {
+    margin-top: 20px;
+}
+
+.non-decor {
+    text-decoration: none;
+    color: black;
+}
+
+.icon-profile {
+    width:24px;
+}
+
+.vertical-align {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.non-align {
+    align-items: normal;
+}
+
+.horizontal-divide {
+    background-color: #28a745;
+    height: 1px;
+    margin: 5px 0
+}

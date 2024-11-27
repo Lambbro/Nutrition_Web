@@ -1,0 +1,80 @@
+﻿@model Nutrition.ViewModels.CreateUserViewModel
+
+<link rel="stylesheet" href="~/css/createUser.css" />
+
+
+@{
+    ViewData["Title"] = "Thông tin người dùng";
+}
+
+<h2>Thông tin người dùng</h2>
+
+<form asp-action="CreateUserInfo" method="post">
+        <input type="hidden" asp-for="account_id" value="@ViewBag.AccountId" />
+
+    <div class="form-group">
+        <label asp-for="user_name" class="control-label">Họ và tên</label>
+        <input asp-for="user_name" class="form-control" />
+        <span asp-validation-for="user_name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="gender" class="control-label">Giới tính</label>
+        <select asp-for="gender" class="form-control">
+            <option value="true">Nam</option>
+            <option value="false">Nữ</option>
+        </select>
+        <span asp-validation-for="gender" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="age" class="control-label">Tuổi</label>
+        <input asp-for="age" type="number" class="form-control" />
+        <span asp-validation-for="age" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="number" class="control-label">Số điện thoại</label>
+        <input asp-for="number" class="form-control" />
+        <span asp-validation-for="number" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="address" class="control-label">Địa chỉ</label>
+        <input asp-for="address" class="form-control" />
+        <span asp-validation-for="address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="height" class="control-label">Chiều cao</label>
+        <input asp-for="height" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="height" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="weight" class="control-label">Cân nặng</label>
+        <input asp-for="weight" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="weight" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="health_info" class="control-label">Thông tin sức khỏe</label>
+        <textarea asp-for="health_info" class="form-control"></textarea>
+        <span asp-validation-for="health_info" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="eating_habits" class="control-label">Thói quen ăn uống</label>
+        <textarea asp-for="eating_habits" class="form-control"></textarea>
+        <span asp-validation-for="eating_habits" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="meals_per_day" class="control-label">Số bữa 1 ngày</label>
+        <input asp-for="meals_per_day" class="form-control" />
+        <span asp-validation-for="meals_per_day" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+</form>
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Quay lại trang chính</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

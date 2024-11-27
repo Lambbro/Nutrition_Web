@@ -1,0 +1,98 @@
+﻿/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.6;
+}
+
+/* Nội dung chính */
+.content {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #28a745;
+}
+
+/* Định dạng thông tin */
+.content div {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.content p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+    .content p strong {
+        color: #495057;
+        font-weight: bold;
+    }
+
+/* Nút hành động */
+a.btn {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    color: white;
+    border: 1px solid #28a745;
+}
+
+    .btn-primary:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+    border: 1px solid #ffc107;
+}
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+        border-color: #d39e00;
+    }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    a.btn {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}

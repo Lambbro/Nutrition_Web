@@ -1,0 +1,51 @@
+﻿@model Nutrition.ViewModels.ProfileViewModel
+
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/profile.css" />
+
+<body>
+    @await Html.PartialAsync("~/Views/PartialView/_Header.cshtml")
+
+    <div class="content">
+        <h2>Thông Tin Cá Nhân</h2>
+        <div class="vertical-align non-align">
+            <div class="profile-container" style="flex: 60%;">
+                <div class="vertical-align">
+                    <h1>Thông tin người dùng: @Model.user_name</h1>
+                    <a href="/User/EditProfile" class="edit-profile-btn non-decor">
+                        <img src="~/icons/file-edit.png" alt="Edit Profile" class="icon-profile" />
+                    </a>
+                </div>
+                <p><strong>Tuổi:</strong> @Model.age</p>
+                <p><strong>Giới tính:</strong> @(Model.gender ? "Nam" : "Nữ")</p>
+                <p><strong>SĐT:</strong> @Model.number</p>
+                <p><strong>Địa chỉ:</strong> @Model.address</p>
+                <p><strong>Chiều cao:</strong> @Model.height cm</p>
+                <p><strong>Cân nặng:</strong> @Model.weight kg</p>
+                <p><strong>Thông tin sức khỏe:</strong> @Model.health_info</p>
+                <p><strong>Thói quen ăn uống:</strong> @Model.eating_habits</p>
+                <p><strong>Số bữa ăn mỗi ngày:</strong> @Model.meals_per_day</p>
+            </div>
+
+            <div class="progress-container" style="flex: 40%;">
+                <div class="vertical-align">
+                    <h3>Thông tin theo dõi</h3>
+                    <a href="/UserProgress/List">
+                        <img src="~/icons/apps.png" alt="Progress List" class="icon-profile" />
+                    </a>
+                </div>
+                @foreach (var progress in Model.progress_list)
+                {
+                    <a class="non-decor" href="@Url.Action("Details", "UserProgress", new { id = @progress.progress_id })">
+                        <p><strong>@progress.health_status</strong> (@progress.create_time.ToString("yyyy-MM-dd")): @progress.height cm - @progress.weight kg</p>
+                        <div class="horizontal-divide"></div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+    
+    
+
+    @await Html.PartialAsync("~/Views/PartialView/_Footer.cshtml")
+</body>

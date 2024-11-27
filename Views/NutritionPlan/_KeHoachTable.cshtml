@@ -1,0 +1,43 @@
+﻿@model IEnumerable<NutritionPlan>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã Kế Hoạch</th>
+            <th>Mã Chuyên Gia</th>
+            <th>Mã Người Dùng</th>
+            <th>Ngày Tạo</th>
+            <th>Chi Tiết Kế Hoạch</th>
+            <th>Gợi Ý Thực Phẩm</th>
+            <th>Số Calo</th>
+            <th>Hành Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var keHoach in Model)
+            {
+                <tr>
+                    <td>@keHoach.sMaKeHoach</td>
+                    <td>@keHoach.sMaChuyenGia</td>
+                    <td>@keHoach.sMaNguoiDung</td>
+                    <td>@keHoach.dNgayTao.ToString("yyyy-MM-dd")</td>
+                    <td>@keHoach.sChiTietKeHoach</td>
+                    <td>@keHoach.sGioiYThucPham</td>
+                    <td>@keHoach.iSoCalo</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@keHoach.sMaKeHoach" class="btn btn-warning btn-sm">Sửa</a>
+                        <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="deleteKeHoach('@keHoach.sMaKeHoach')">Xóa</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">Không tìm thấy kết quả nào</td>
+            </tr>
+        }
+    </tbody>
+</table>

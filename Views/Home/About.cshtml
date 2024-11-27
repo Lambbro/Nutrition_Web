@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "About Us";
+}
+<link rel="stylesheet" href="~/css/about.css" />
+
+<body>
+    @await Html.PartialAsync("~/Views/PartialView/_Header.cshtml")
+
+    <div class="content">
+        <section class="about-hero">
+            <h1>Về chúng tôi</h1>
+            <p>Trao quyền cho cuộc sống khỏe mạnh hơn với dinh dưỡng cá nhân và lời khuyên của chuyên gia.</p>
+        </section>
+
+        <section class="about-details">
+            <div class="detail">
+                <h2>Nhiệm vụ của chúng tôi</h2>
+                <p>
+                    Sứ mệnh của chúng tôi là cung cấp hướng dẫn dinh dưỡng dễ tiếp cận, chính xác và hữu ích cho mọi người, thúc đẩy lối sống và cộng đồng lành mạnh hơn.
+                </p>
+            </div>
+            <div class="detail">
+                <h2>Tầm nhìn</h2>
+                <p>Chúng tôi hình dung một thế giới nơi mọi người đều có kiến ​​thức và nguồn lực để đạt được sức khỏe và thể chất tối ưu thông qua dinh dưỡng cá nhân hóa.</p>
+            </div>
+            <div class="detail">
+                <h2>Hãy chọn chúng tôi</h2>
+                <ul>
+                    <li>Khuyến nghị chế độ ăn uống cá nhân.</li>
+                    <li>Tư vấn trực tiếp với các chuyên gia dinh dưỡng.</li>
+                    <li>
+                        Các công cụ chính xác để theo dõi và giám sát tiến trình sức khỏe của bạn.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="about-team">
+            <h2>Thành viên của chúng tôi</h2>
+            <div class="team-members">
+                <div class="member">
+                    <img src="~/images/chatgpt.jpg" alt="Team Member 1" />
+                    <h3>ChatGPT</h3>
+                    <p>UI Designer</p>
+                </div>
+                <div class="member">
+                    <img src="~/images/gemini.jpg" alt="Team Member 2" />
+                    <h3>Gemini</h3>
+                    <p>Flow Designer</p>
+                </div>
+                <div class="member">
+                    <img src="~/images/copilot.jpg" alt="Team Member 3" />
+                    <h3>CoPilot</h3>
+                    <p>Main Dev</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    @await Html.PartialAsync("~/Views/PartialView/_Footer.cshtml")
+</body>

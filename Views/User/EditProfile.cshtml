@@ -1,0 +1,82 @@
+﻿@model Nutrition.ViewModels.EditProfileViewModel
+
+<link rel="stylesheet" href="~/css/editProfile.css" />
+
+<body>
+    @await Html.PartialAsync("~/Views/PartialView/_Header.cshtml")
+    
+
+    <div class="content">
+        <a href="/User/Profile" class="non-decor back-btn">Quay về trang trước</a>
+        <h2 style="text-align: center">Chỉnh sửa thông tin người dùng</h2>
+
+        <form asp-action="EditProfile" method="post">
+            <div class="form-group">
+                <label asp-for="user_name" class="control-label">Họ tên</label>
+                <input asp-for="user_name" class="form-control" />
+                <span asp-validation-for="user_name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="gender" class="control-label">Giới tính</label>
+                <select asp-for="gender" class="form-control">
+                    <option value="true">Male</option>
+                    <option value="false">Female</option>
+                </select>
+                <span asp-validation-for="gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="age" class="control-label">Tuổi</label>
+                <input asp-for="age" type="number" class="form-control" />
+                <span asp-validation-for="age" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="number" class="control-label">SĐT</label>
+                <input asp-for="number" type="tel" class="form-control" />
+                <span asp-validation-for="number" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="address" class="control-label">Địa chỉ</label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="height" class="control-label">Chiều cao (cm)</label>
+                <input asp-for="height" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="height" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="weight" class="control-label">Cân nặng (kg)</label>
+                <input asp-for="weight" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="weight" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="health_info" class="control-label">Thông tin sức khỏe</label>
+                <textarea asp-for="health_info" class="form-control"></textarea>
+                <span asp-validation-for="health_info" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="eating_habits" class="control-label">Thói quen ăn uống</label>
+                <textarea asp-for="eating_habits" class="form-control"></textarea>
+                <span asp-validation-for="eating_habits" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="meals_per_day" class="control-label">Số bữa ăn mỗi ngày</label>
+                <input asp-for="meals_per_day" class="form-control" />
+                <span asp-validation-for="meals_per_day" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+        </form>
+    </div>
+
+    @await Html.PartialAsync("~/Views/PartialView/_Footer.cshtml")
+</body>

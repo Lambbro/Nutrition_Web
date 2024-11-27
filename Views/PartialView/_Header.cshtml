@@ -1,0 +1,93 @@
+﻿<header>
+    <link rel="stylesheet" href="~/css/_header.css">
+    <div class="container">
+        <a href="#" class="nav-brand">Sức khỏe là trên hết</a>
+        <ul class="navbar">
+            @if (ViewData["AccountId"] != null)
+            {
+                bool isAdmin = (bool?)ViewData["AccountType"] ?? false;
+                if (isAdmin)
+                {
+                    <li class="nav-item">
+                        <a href="@Url.Action("ManageUser", "Account")" class="nav">Quản lý tài khoản</a>
+                    </li>
+                }
+            }
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "Home")" class="nav">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("About", "Home")" class="nav">Về chúng tôi</a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index","Nutritionist")" class="nav">Chuyên gia</a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Contact", "Home")" class="nav">Liên hệ</a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Profile", "User")" class="nav">Thông tin người dùng</a>
+            </li>
+            @if (ViewData["AccountId"] != null)
+            {
+                <li class="nav-item">
+                    <a href="" class="nav" id="logOutLink">Đăng xuất</a>
+                </li>
+            }
+            <li class="nav-item nav-button">
+                <a href="" class="nav" style="color:white" id="makeAppointmentLink">Tư vấn</a>
+            </li>
+        </ul>
+    </div>
+</header>
+<div style="height:80px"></div>
+
+<script>
+    const navLinks = document.querySelectorAll('.nav-item .nav');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            navLinks.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    const appointmentLink = document.getElementById('makeAppointmentLink');
+
+    // Khi click vào Make an Appointment
+    appointmentLink.addEventListener('click', function (e) {
+        e.preventDefault();  // Ngừng sự kiện click mặc định
+
+        // Gửi yêu cầu đến controller để kiểm tra session
+        fetch('/Account/RedirectToAppointment', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.redirected) {
+                    // Nếu redirect, điều hướng đến URL mới
+                    window.location.href = response.url;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+    // Khi click vào Log Out
+    logOutLink.addEventListener('click', function (e) {
+        e.preventDefault();  // Ngừng sự kiện click mặc định
+
+        // Gửi yêu cầu đến controller để xóa session
+        fetch('/Account/LogOut', {
+            method: 'POST', // Sử dụng POST để bảo mật hơn
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                // Chuyển hướng đến trang chủ sau khi đăng xuất
+                window.location.href = '/';
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>

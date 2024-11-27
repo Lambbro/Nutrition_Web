@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Nutrition";
+}
+
+<link rel="stylesheet" href="~/css/site.css"/>
+<link rel="stylesheet" href="~/css/home.css" />
+
+
+<body>
+    @await Html.PartialAsync("~/Views/PartialView/_Header.cshtml")
+
+    <div class="content">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1>Chào mừng bạn đến với chúng tôi</h1>
+            <p>Tham gia tư vấn để khám phá thêm về sức khỏe của bản thân</p>
+            <button class="cta-button">Tham gia</button>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features">
+            <div class="feature">
+                <img src="~/images/healthy-food.jpg" alt="Healthy Food" />
+                <h2>Thực phẩm tốt cho sức khỏe</h2>
+                <p>Khám phá loại thực phẩm bổ sung dinh dưỡng tốt nhất cho bạn.</p>
+            </div>
+            <div class="feature">
+                <img src="~/images/consultant.jpg" alt="Consultation" />
+                <h2>Chuyên gia dinh dưỡng</h2>
+                <p>Tham gia tư vấn với những chuyên gia hàng đầu.</p>
+            </div>
+            <div class="feature">
+                <img src="~/images/tracking.jpg" alt="Tracking" />
+                <h2>Theo dõi sức khỏe</h2>
+                <p>Theo dõi sức khỏe của bản thân.</p>
+            </div>
+        </div>
+
+        <!-- Posts Section -->
+        <div class="posts-section">
+            <h2>Bài đăng gần nhất</h2>
+            <div class="posts">
+                <div class="post">
+                    <img src="~/images/post1.jpg" alt="Post 1" />
+                    <h3>Top 10 loại thực phẩm tốt cho sức khỏe nhất</h3>
+                    <p>Nạp đủ năng lượng cho ngày mới với 10 loại thực phẩm đỉnh kout.</p>
+                    <a href="#" class="read-more">Xem thêm</a>
+                </div>
+                <div class="post">
+                    <img src="~/images/post2.jpg" alt="Post 2" />
+                    <h3>Hiểu rõ thế nào là dinh dưỡng</h3>
+                    <p>Hiểu rõ cơ thể cần những loại dinh dưỡng nào.</p>
+                    <a href="#" class="read-more">Xem thêm</a>
+                </div>
+                <div class="post">
+                    <img src="~/images/post3.jpg" alt="Post 3" />
+                    <h3>Bữa ăn cho những người bận rộn</h3>
+                    <p>Tiết kiệm thời gian với những món ăn dễ nấu dễ làm mà đầy đủ dinh dưỡng.</p>
+                    <a href="#" class="read-more">Xem thêm</a>
+                </div>
+                <div class="post">
+                    <img src="~/images/post4.jpg" alt="Post 4" />
+                    <h3>Tầm quan trọng của Hydrat hóa</h3>
+                    <p>Khám phá lý do tại sao giữ nước là chìa khóa cho sức khỏe của bạn.</p>
+                    <a href="#" class="read-more">Xem thêm</a>
+                </div>
+                <div class="post">
+                    <img src="~/images/post5.jpg" alt="Post 5" />
+                    <h3>Bữa ăn cân bằng dinh dưỡng với lối sống lành mạnh</h3>
+                    <p>Khám phá những món ăn và dinh dưỡng cân bằng nhất cho cơ thể bản thân.</p>
+                    <a href="#" class="read-more">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @await Html.PartialAsync("~/Views/PartialView/_Footer.cshtml")
+</body>

@@ -1,0 +1,59 @@
+﻿@model Nutrition.ViewModels.CreateNutritionistViewModel
+
+<link rel="stylesheet" href="~/css/createNutritionist.css" />
+
+@{
+    ViewData["Title"] = "Thông tin chuyên gia dinh dưỡng";
+}
+
+<h2>Thông tin chuyên gia dinh dưỡng</h2>
+
+<form asp-action="CreateNutritionistInfo" method="post">
+        <input type="hidden" asp-for="account_id" value="@ViewBag.AccountId" />
+    <div class="form-group">
+        <label asp-for="nutritionist_name" class="control-label"></label>
+        <input asp-for="nutritionist_name" class="form-control" />
+        <span asp-validation-for="nutritionist_name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="gender" class="control-label"></label>
+        <select asp-for="gender" class="form-control">
+            <option value="true">Nam</option>
+            <option value="false">Nữ</option>
+        </select>
+        <span asp-validation-for="gender" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="age" class="control-label"></label>
+        <input asp-for="age" type="number" class="form-control" />
+        <span asp-validation-for="age" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="number" class="control-label"></label>
+        <input asp-for="number" class="form-control" />
+        <span asp-validation-for="number" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="address" class="control-label"></label>
+        <input asp-for="address" class="form-control" />
+        <span asp-validation-for="address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="certificated" class="control-label"></label>
+        <input asp-for="certificated" class="form-control" />
+        <span asp-validation-for="certificated" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+</form>
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Quay lại trang chính</a>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
